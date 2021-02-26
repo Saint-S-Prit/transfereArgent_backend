@@ -42,13 +42,6 @@ class Compte
      */
     private $caissier;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Agence::class, cascade={"persist", "remove"})
-     */
-    private $agence;
-
-
-
     public function getId(): ?int
     {
         return $this->id;
@@ -110,18 +103,6 @@ class Compte
     public function setCaissier(?Caissier $caissier): self
     {
         $this->caissier = $caissier;
-
-        return $this;
-    }
-
-    public function getAgence(): ?Agence
-    {
-        return $this->agence;
-    }
-
-    public function setAgence(?Agence $agence): self
-    {
-        $this->agence = $agence;
 
         return $this;
     }

@@ -15,7 +15,7 @@ class Compte
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -36,18 +36,6 @@ class Compte
      * @ORM\Column(type="boolean")
      */
     private $status;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Caissier::class, inversedBy="comptes")
-     */
-    private $caissier;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Agence::class, cascade={"persist", "remove"})
-     */
-    private $agence;
-
-
 
     public function getId(): ?int
     {
@@ -98,30 +86,6 @@ class Compte
     public function setStatus(bool $status): self
     {
         $this->status = $status;
-
-        return $this;
-    }
-
-    public function getCaissier(): ?Caissier
-    {
-        return $this->caissier;
-    }
-
-    public function setCaissier(?Caissier $caissier): self
-    {
-        $this->caissier = $caissier;
-
-        return $this;
-    }
-
-    public function getAgence(): ?Agence
-    {
-        return $this->agence;
-    }
-
-    public function setAgence(?Agence $agence): self
-    {
-        $this->agence = $agence;
 
         return $this;
     }

@@ -19,12 +19,12 @@ class Caissier extends User
      */
     protected $id;
 
+
+
     /**
      * @ORM\OneToMany(targetEntity=Compte::class, mappedBy="caissier")
      */
     private $comptes;
-
-
 
     public function __construct()
     {

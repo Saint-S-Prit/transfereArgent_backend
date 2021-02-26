@@ -42,11 +42,6 @@ class Transaction
      */
     private $frais;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=UserAgence::class, inversedBy="transactions")
-     */
-    private $userAgence;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -108,18 +103,6 @@ class Transaction
     public function setFrais(int $frais): self
     {
         $this->frais = $frais;
-
-        return $this;
-    }
-
-    public function getUserAgence(): ?UserAgence
-    {
-        return $this->userAgence;
-    }
-
-    public function setUserAgence(?UserAgence $userAgence): self
-    {
-        $this->userAgence = $userAgence;
 
         return $this;
     }

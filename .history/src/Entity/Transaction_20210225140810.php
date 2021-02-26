@@ -15,7 +15,7 @@ class Transaction
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -41,11 +41,6 @@ class Transaction
      * @ORM\Column(type="integer")
      */
     private $frais;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=UserAgence::class, inversedBy="transactions")
-     */
-    private $userAgence;
 
     public function getId(): ?int
     {
@@ -108,18 +103,6 @@ class Transaction
     public function setFrais(int $frais): self
     {
         $this->frais = $frais;
-
-        return $this;
-    }
-
-    public function getUserAgence(): ?UserAgence
-    {
-        return $this->userAgence;
-    }
-
-    public function setUserAgence(?UserAgence $userAgence): self
-    {
-        $this->userAgence = $userAgence;
 
         return $this;
     }
