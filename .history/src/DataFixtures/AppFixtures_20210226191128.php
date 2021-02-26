@@ -12,6 +12,7 @@ use App\Entity\Compte;
 use App\Entity\UserAgence;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Faker\Provider\UserAgent;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
@@ -105,9 +106,8 @@ class AppFixtures extends Fixture
                     ->setAdresse($faker->city)
                     ->setLattitude($faker->latitude)
                     ->setLonitude($faker->longitude)
-                    ->setNomComplet($faker->firstName())
-                    ->setTelephone($faker->phoneNumber);
-                $manager->persist($agence);
+                    ->setNomComplet($faker->firstName());
+                $manager->flush($agence);
 
                 $user_agence = new UserAgence();
                 $hash = $this->encoder->encodePassword($user_agence, 'password');
@@ -121,28 +121,9 @@ class AppFixtures extends Fixture
                     ->setPassword($hash)
                     ->setProfil($profil)
                     ->setStatus(true)
-                    ->setAgence($agence)
+                    ->setAgent($agence)
                     ->setTelephone($faker->phoneNumber);
                 $manager->persist($user_agence);
-
-
-
-                $agence = new Agence();
-                $agence
-                    ->setAdresse($faker->city)
-                    ->setLattitude($faker->latitude)
-                    ->setLonitude($faker->longitude)
-                    ->setNomComplet($faker->firstName())
-                    ->setTelephone($faker->phoneNumber);
-                $manager->persist($agence);
-
-                $compte = new Compte();
-                $compte
-                    ->setNumeroCompte($faker->numberBetween(23, 8757456))
-                    ->setSolde($faker->numberBetween(500000))
-                    ->setAgence($agence)
-                    ->setCaissier($caissier);
-                $manager->persist($compte);
             }
         }
         $manager->flush();

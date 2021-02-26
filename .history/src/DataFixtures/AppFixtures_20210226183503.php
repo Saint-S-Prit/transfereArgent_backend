@@ -62,9 +62,9 @@ class AppFixtures extends Fixture
 
             if ($profil->getLibelle() == "caissier") {
 
-                $caissier = new Caissier();
-                $hash = $this->encoder->encodePassword($caissier, 'password');
-                $caissier
+                $adminSysteme = new AdminSysteme();
+                $hash = $this->encoder->encodePassword($adminSysteme, 'password');
+                $adminSysteme
                     ->setPrenom($faker->firstName())
                     ->setNom($faker->lastName)
                     ->setAdresse($faker->city)
@@ -75,14 +75,14 @@ class AppFixtures extends Fixture
                     ->setProfil($profil)
                     ->setStatus(true)
                     ->setTelephone($faker->phoneNumber);
-                $manager->persist($caissier);
+                $manager->persist($adminSysteme);
             }
 
             if ($profil->getLibelle() == "admin_agence") {
 
-                $admin_agence = new AdminAgence();
-                $hash = $this->encoder->encodePassword($admin_agence, 'password');
-                $admin_agence
+                $adminSysteme = new AdminSysteme();
+                $hash = $this->encoder->encodePassword($adminSysteme, 'password');
+                $adminSysteme
                     ->setPrenom($faker->firstName())
                     ->setNom($faker->lastName)
                     ->setAdresse($faker->city)
@@ -93,57 +93,10 @@ class AppFixtures extends Fixture
                     ->setProfil($profil)
                     ->setStatus(true)
                     ->setTelephone($faker->phoneNumber);
-                $manager->persist($admin_agence);
+                $manager->persist($adminSysteme);
             }
 
-
-
-            if ($profil->getLibelle() == "user_agence") {
-
-                $agence = new Agence();
-                $agence
-                    ->setAdresse($faker->city)
-                    ->setLattitude($faker->latitude)
-                    ->setLonitude($faker->longitude)
-                    ->setNomComplet($faker->firstName())
-                    ->setTelephone($faker->phoneNumber);
-                $manager->persist($agence);
-
-                $user_agence = new UserAgence();
-                $hash = $this->encoder->encodePassword($user_agence, 'password');
-                $user_agence
-                    ->setPrenom($faker->firstName())
-                    ->setNom($faker->lastName)
-                    ->setAdresse($faker->city)
-                    ->setEmail($faker->email)
-                    ->setCin($faker->creditCardNumber)
-                    ->setDateNaiss('16/07/1993')
-                    ->setPassword($hash)
-                    ->setProfil($profil)
-                    ->setStatus(true)
-                    ->setAgence($agence)
-                    ->setTelephone($faker->phoneNumber);
-                $manager->persist($user_agence);
-
-
-
-                $agence = new Agence();
-                $agence
-                    ->setAdresse($faker->city)
-                    ->setLattitude($faker->latitude)
-                    ->setLonitude($faker->longitude)
-                    ->setNomComplet($faker->firstName())
-                    ->setTelephone($faker->phoneNumber);
-                $manager->persist($agence);
-
-                $compte = new Compte();
-                $compte
-                    ->setNumeroCompte($faker->numberBetween(23, 8757456))
-                    ->setSolde($faker->numberBetween(500000))
-                    ->setAgence($agence)
-                    ->setCaissier($caissier);
-                $manager->persist($compte);
-            }
+            admin_agence
         }
         $manager->flush();
     }

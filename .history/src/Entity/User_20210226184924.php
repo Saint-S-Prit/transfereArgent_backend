@@ -31,7 +31,7 @@ class User implements UserInterface
     private $email;
 
 
-    private $roles = [];
+    protected $roles = [];
 
     /**
      * @var string The hashed password
@@ -121,9 +121,7 @@ class User implements UserInterface
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     */
+
     public function getRoles(): array
     {
         $roles = $this->roles;

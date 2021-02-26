@@ -55,7 +55,6 @@ class Compte
     public function __construct()
     {
         $this->setCreatAt(new \DateTimeImmutable);
-        $this->setStatus(true);
     }
 
 

@@ -25,7 +25,6 @@ class UserAgence extends User
      * @ORM\ManyToOne(targetEntity=Agence::class, inversedBy="userAgences")
      */
     protected $agence;
-
     /**
      * @ORM\OneToMany(targetEntity=Transaction::class, mappedBy="userAgence")
      */

@@ -31,7 +31,7 @@ class User implements UserInterface
     private $email;
 
 
-    private $roles = [];
+    protected $roles = [];
 
     /**
      * @var string The hashed password
@@ -131,11 +131,7 @@ class User implements UserInterface
         $roles[] = 'ROLE_' . $this->profil->getLibelle();
         return array_unique($roles);
     }
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-        return $this;
-    }
+
 
     /**
      * @see UserInterface

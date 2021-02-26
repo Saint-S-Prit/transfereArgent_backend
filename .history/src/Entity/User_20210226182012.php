@@ -92,6 +92,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->profils = new ArrayCollection();
+        $this->setStatus() = true;
     }
 
     public function getId(): ?int
@@ -128,12 +129,15 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_' . $this->profil->getLibelle();
+        $roles[] = "ROLE_" . $this->profile->getLibelle();
+
         return array_unique($roles);
     }
+
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
         return $this;
     }
 

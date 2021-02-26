@@ -31,7 +31,7 @@ class User implements UserInterface
     private $email;
 
 
-    private $roles = [];
+    protected $roles = [];
 
     /**
      * @var string The hashed password

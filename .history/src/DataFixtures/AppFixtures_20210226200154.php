@@ -144,6 +144,25 @@ class AppFixtures extends Fixture
                     ->setCaissier($caissier);
                 $manager->persist($compte);
             }
+
+            if ($profil->getLibelle() == "admin_agence") {
+
+                $admin_agence = new AdminAgence();
+                $hash = $this->encoder->encodePassword($admin_agence, 'password');
+                $admin_agence
+                    ->setPrenom($faker->firstName())
+                    ->setNom($faker->lastName)
+                    ->setAdresse($faker->city)
+                    ->setEmail($faker->email)
+                    ->setCin($faker->creditCardNumber)
+                    ->setDateNaiss('16/07/1993')
+                    ->setPassword($hash)
+                    ->setProfil($profil)
+                    ->setStatus(true)
+                    ->setAgence(agence)
+                    ->setTelephone($faker->phoneNumber);
+                $manager->persist($admin_agence);
+            }
         }
         $manager->flush();
     }
